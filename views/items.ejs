@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><%= title %></title>
+    <!--<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>-->
+    <!--<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>-->
+    <!--<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>-->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/simple-sidebar.css" rel="stylesheet">
+</head>
+<body>
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+                <a href="#">
+                    Start Bootstrap
+                </a>
+            </li>
+            <li>
+                <a href="#">Dashboard</a>
+            </li>
+            <li>
+                <a href="#">Shortcuts</a>
+            </li>
+            <li>
+                <a href="#">Overview</a>
+            </li>
+            <li>
+                <a href="#">Events</a>
+            </li>
+            <li>
+                <a href="#">About</a>
+            </li>
+            <li>
+                <a href="#">Services</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <a href="#menu-toggle" class="btn btn-secondary pull-left" id="menu-toggle">Open Menu</a>
+            <h1>Simple Sidebar</h1>
+
+            <div class="row">
+                <% items.forEach(function (item) { %>
+                <div class="col-sm-3">
+                        <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
+                            <div class="card-header"><%=item.name%><span class="badge badge-pill badge-light" style="position: absolute; right: 3%">¢<%=item.price%></span></div>
+                            <div class="card-body">
+                                <h6 class="card-title">Revenue Stream</h6>
+                                <p class="card-text">Total Purchases: <%=item.totalPurchases%> <span class="badge badge-dark" style="position: absolute; right: 3%">¢<%=item.totalPurchases * item.price%></span></p>
+                            </div>
+                            <div class="card-footer">Total In Stock: <span class="badge badge-light" style="position: absolute; right: 3%"><%=item.qty%></span></div>
+                        </div>
+                    <div class="editable" id="editable<%=item._id%>">
+                        <form class="form-group">
+                            <input type="hidden" value="<%= item._id%>">
+                            <fieldset>
+                                <div class="input-group">
+                                    <span class="input-group-addon">Name</span>
+                                    <input class="form-control" value="<%=item.name%>">
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+
+
+
+
+
+
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- Bootstrap core JavaScript -->
+<script src="/vendor/jquery/jquery.min.js"></script>
+<script src="/vendor/popper/popper.min.js"></script>
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- Menu Toggle Script -->
+<script>
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+        if ($("#menu-toggle").text() === "Open Menu") {
+            $("#menu-toggle").text("Close Menu");
+        } else {
+            $("#menu-toggle").text("Open Menu");
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><%= title %></title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/stylesheets/simple-sidebar.css" rel="stylesheet">
+    <link href="/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<div id="wrapper" style="margin-top: 100px;">
+    <!-- Page Content -->
+    <div class="container">
+        <div class="text-center">
+            <h1>Login</h1>
+            <p class="text-danger"><%=message%>
+            </p>
+            <form method="post" action="/login">
+                <fieldset>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1"><i class="fa fa-user-md"></i></span>
+                        <input type="text" class="form-control" placeholder="Username or Email" aria-describedby="basic-addon1" name="email" autofocus>
+                    </div>
+                </fieldset>
+                <p></p>
+                <fieldset>
+                    <div class="input-group">
+                        <span class="input-group-addon">Password</span>
+                        <input type="password" class="form-control" aria-label="password" name="password">
+                        <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                    </div>
+                </fieldset>
+                <fieldset class="text-right" style="margin:20px;">
+                    <button class="btn btn-warning" style="color: white">Submit</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- Bootstrap core JavaScript -->
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>
