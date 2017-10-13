@@ -3,7 +3,6 @@ const router = express.Router();
 let Item = require('../models/items.model');
 
 router.get('/', function(req, res, next) {
-    console.log(req.user);
     res.render('index', { title: 'Dashboard', user:req.user });
 });
 
@@ -14,6 +13,14 @@ router.get('/items', function (req, res, next) {
         res.render('items', {user: req.user, items: items});
     });
 });
+
+router.post('/items/update', function (req, res, next) {
+    Item.findOne({_id:req.body._id}, function (err, item) {
+       item.name = req.body.name;
+       item.qty = req.body.qty;
+    });
+});
+
 router.post('/items/add', function (req, res, next) {
     let newItem = new Item();
     newItem.name = req.body.name;

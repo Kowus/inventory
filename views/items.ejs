@@ -9,13 +9,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Simple Sidebar - Start Bootstrap Template</title>
-
     <!-- Bootstrap core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="/stylesheets/simple-sidebar.css" rel="stylesheet">
+    <link href="/stylesheets/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
 <div id="wrapper">
@@ -57,11 +56,12 @@
     <div id="page-content-wrapper">
         <div class="container-fluid">
             <a href="#menu-toggle" class="btn btn-secondary pull-left" id="menu-toggle">Open Menu</a>
-            <h1>Simple Sidebar</h1>
+            <a href="/logout" class="btn btn-danger" style="position: fixed; top: 3%; right:3%; z-index: 999999999999999999999;">Logout</a>
 
-            <div class="row">
+            <div class="row" style="margin-top: 100px;">
                 <% items.forEach(function (item) { %>
-                <div class="col-sm-3">
+                <div class="col-sm-4">
+                    <a data-toggle="collapse" href="#editable<%=item._id%>" aria-expanded="false" aria-controls="editable<%=item._id%>">
                         <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
                             <div class="card-header"><%=item.name%><span class="badge badge-pill badge-light" style="position: absolute; right: 3%">¢<%=item.price%></span></div>
                             <div class="card-body">
@@ -70,15 +70,32 @@
                             </div>
                             <div class="card-footer">Total In Stock: <span class="badge badge-light" style="position: absolute; right: 3%"><%=item.qty%></span></div>
                         </div>
-                    <div class="editable" id="editable<%=item._id%>">
+                    </a>
+                    <div class="collapse editable" id="editable<%=item._id%>" style="padding: 5px;">
+                        <h5>Edit</h5>
                         <form class="form-group">
                             <input type="hidden" value="<%= item._id%>">
                             <fieldset>
                                 <div class="input-group">
-                                    <span class="input-group-addon">Name</span>
+                                    <span class="input-group-addon bg-dark text-white">Name</span>
                                     <input class="form-control" value="<%=item.name%>">
                                 </div>
                             </fieldset>
+                            <hr>
+                            <fieldset>
+                                <div class="input-group">
+                                    <span class="input-group-addon bg-dark text-white">¢</span>
+                                    <input class="form-control" type="number" value="<%=item.price%>" step=".01">
+                                    <span class="input-group-addon bg-dark text-white">qty</span>
+                                    <input class="form-control" value="<%=item.qty%>" type="number" readonly>
+                                </div>
+                                <r>
+                                <div class="input-group">
+                                    <span class="input-group-addon bg-dark text-white">qty <i class="fa fa-plus-circle"></i></span>
+                                    <input class="form-control" value="0" type="number">
+                                </div>
+                            </fieldset>
+                            <input type="button" value="Submit" class="btn btn-success pull-right" style="margin: 5px;">
                         </form>
                     </div>
                 </div>
